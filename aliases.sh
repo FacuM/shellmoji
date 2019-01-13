@@ -38,7 +38,8 @@ function clear_line
 {
   printf '\r'
   COL=1
-  while [ $COL -lt $(tput cols) ]
+  COLS=$(tput cols)
+  while [ $COL -lt $COLS ]
   do
     printf ' '
     COL=$(( $COL + 1 ))
