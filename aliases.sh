@@ -64,12 +64,12 @@ CLOCKS=(
 # Functions
 function getEarthEmoji
 {
- printf "${EARTHS[ $(( $RANDOM % 2 + 1 )) ]}"
+ printf "${EARTHS[ $(( $RANDOM % 2 )) ]}"
 }
 
 function getBookEmoji
 {
- printf "${BOOKS[ $(( $RANDOM % 2 + 1 )) ]}"
+ printf "${BOOKS[ $(( $RANDOM % 4 )) ]}"
 }
 
 function clear_line
@@ -168,7 +168,7 @@ function alias_ls
 printf '\n'
 if [ -t 1 ]
 then
- alias_$1
+ alias_ls $1
 else
- $1
+ ls $1
 fi
