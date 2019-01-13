@@ -12,11 +12,11 @@ Temporarily, the configuration will be done manually, as I don't suggest using t
 
 To enable it, override your `ls` command with an alias, run this:
 
-   alias ls='bash ~/shellmoji/aliases.sh'
+`alias ls='bash ~/shellmoji/aliases.sh'`
 
 You can also add it to your `~/.bashrc` file if you want it to last forever. Simply run this:
 
-   echo "alias ls='bash ~/shellmoji/aliases.sh'" >> ~/.bashrc
+`echo "alias ls='bash ~/shellmoji/aliases.sh'" >> ~/.bashrc`
 
 Finally, simply run `ls` and you'll be up and running.
 
