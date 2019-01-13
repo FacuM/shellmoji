@@ -10,7 +10,7 @@ else
     FRAMECOUNT=0
   fi
 fi
-# Process dots, generate a string off the integer.
+# Generate a string with dots.
 if [ "$DOTS" == '...' ]
 then
  DOTS=''
