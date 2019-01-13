@@ -8,7 +8,7 @@ Shellmoji is a simple human-readable implementation of emojis in a command-line 
 Usage
 -----
 
-Temporarily, the configuration will be done manually, as I don't suggest using this for a daily system as it's not totally tested.
+Temporarily, the configuration will be done manually, as I don't suggest using this for a daily system, it's not been fully tested.
 
 To enable it, override your `ls` command with an alias, run this:
 
