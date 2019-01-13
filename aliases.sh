@@ -168,7 +168,7 @@ function alias_ls
 printf '\n'
 if [ -t 1 ]
 then
- alias_ls $1
+ alias_$1
 else
- ls $1
+ $1
 fi
