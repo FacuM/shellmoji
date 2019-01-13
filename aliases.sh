@@ -34,29 +34,23 @@ CLOCKS=(
 )
 
 # Functions
-function animate_clock
+function clear_line
 {
- echo $1
- if [ $1 -lt 1 ]
- then
-  COUNT=0
-  while [ $COUNT -lt ${#CLOCKS[@]} ]
+  printf '\r'
+  COL=1
+  while [ $COL -lt $(tput cols) ]
   do
-    printf '\r'${CLOCKS["$COUNT"]}
-    COUNT=$(( $COUNT + 1 ))
-    sleep 0.1
+    printf ' '
+    COL=$(( $COL + 1 ))
   done
- fi
- return $(( $1 + 1 ))
 }
 
 function alias_ls
 {
- if [ -t 1 ]
- then
    OUT=''; OUT_LS=$(find $1 -maxdepth 1)
    for content in $OUT_LS
    do
+    . includes/do_anim_cycle.sh
     SEEK=$(echo "$content" | tr -cd '/' | wc -c)
     CURRENT=$(echo "$content" | cut -d '/' -f $(( $SEEK + 1 )) )
     # Regular file
@@ -76,19 +70,11 @@ function alias_ls
       fi
      fi
     fi
-    #animate_clock $QUEUE &
-    QUEUE=$(( $QUEUE + $? ))
-   done
-   if [ "$QUEUE" -eq 0 ]
-   then
-    printf "$OUT"
-   fi
- else
-   ls "$1"
- fi
+  done
+  clear_line
+  printf "$OUT"
 }
 
 # Main
-QUEUE=0
 printf '\n'
 alias_ls $1
