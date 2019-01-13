@@ -102,25 +102,25 @@ function alias_ls
       SECONDSEEK=$(echo "$content" | tr -cd '.' | wc -c)
       SECONDCURRENT=$(echo "$content" | cut -d '.' -f $(( $SECONDSEEK + 1 )) | cut -d '/' -f $(( $SECONDSEEK + 1 )) )
       case "$SECONDCURRENT" in
-        'LICENSE')
+        'LICENSE') # Licenses
           OUT="$OUT""${EMOJIS[4]}"' '"$CURRENT"
           ;;
-        'sh')
+        'sh' | 'bat') # Scripts
           OUT="$OUT""${EMOJIS[5]}"' '"$CURRENT"
           ;;
-        'epub')
+        'epub' | 'pdf') # Books
           OUT="$OUT""$(getBookEmoji)"' '"$CURRENT"
           ;;
-        'mp3' | 'wma' | 'aac')
+        'mp3' | 'wma' | 'aac') # Low quality audio
           OUT="$OUT""${EMOJIS[8]}"' '"$CURRENT"
           ;;
-        'flac' | 'ac3' | 'dsf' | 'dts' | 'wav')
+        'flac' | 'ac3' | 'dsf' | 'dts' | 'wav') # High quality audio
           OUT="$OUT""${EMOJIS[10]}"' '"$CURRENT"
           ;;
-        'mid' | 'mid')
+        'mid' | 'mid') # Synth audio
           OUT="$OUT""${EMOJIS[11]}"' '"$CURRENT"
           ;;
-        *)
+        *) # Unsupported files
           OUT="$OUT""${EMOJIS[0]}"' '"$CURRENT"
           ;;
       esac
