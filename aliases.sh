@@ -28,6 +28,8 @@ EMOJIS=(
 '\xF0\x9F\x92\xBB' # (personal computer)
 '\xE2\x99\xA8'     # (hot springs)
 '\xE2\x9D\x93'     # (black question mark ornament)
+'\xF0\x9F\x8E\xB5' # (musical note)
+'\xF0\x9F\x93\x85' # (calendar)
 )
 
 EARTHS=(
@@ -96,19 +98,22 @@ function alias_ls
      if [ -s "$content" ]
      then
       SECONDSEEK=$(echo "$content" | tr -cd '.' | wc -c)
-      SECONDCURRENT=$(echo "$content" | cut -d '.' -f $(( $SECONDSEEK + 1 )) | cut -d '/' -f $(( $SECONDSEEK + 1 )))
+      SECONDCURRENT=$(echo "$content" | cut -d '.' -f $(( $SECONDSEEK + 1 )) | cut -d '/' -f $(( $SECONDSEEK + 1 )) )
       case "$SECONDCURRENT" in
         'LICENSE')
-          OUT="$OUT""${EMOJIS[4]}"' '"$SECONDCURRENT"
+          OUT="$OUT""${EMOJIS[4]}"' '"$CURRENT"
           ;;
         'sh')
-          OUT="$OUT""${EMOJIS[5]}"' '"$SECONDCURRENT"
+          OUT="$OUT""${EMOJIS[5]}"' '"$CURRENT"
           ;;
         'epub')
-          OUT="$OUT""$(getBookEmoji)"' '"$SECONDCURRENT"
+          OUT="$OUT""$(getBookEmoji)"' '"$CURRENT"
+          ;;
+        'flac' | 'mp3' | 'wma' | 'aac' | 'ac3' | 'dsf' | 'dts' | 'wav')
+          OUT="$OUT""${EMOJIS[8]}"' '"$CURRENT"
           ;;
         *)
-          OUT="$OUT""${EMOJIS[0]}"' '"$SECONDCURRENT"
+          OUT="$OUT""${EMOJIS[0]}"' '"$CURRENT"
           ;;
       esac
      else
@@ -118,7 +123,13 @@ function alias_ls
      # Directory
      if [ -d "$content" ]
      then
-      OUT="$OUT""${EMOJIS[1]}"' '"$CURRENT"
+      # If the directory name is ".git", show a different icon.
+      if [ "$CURRENT" == '.git' ]
+      then
+       OUT="$OUT""${EMOJIS[9]}"' '"$CURRENT"
+      else
+       OUT="$OUT""${EMOJIS[1]}"' '"$CURRENT"
+      fi
      else
       # Special file
       if [ -c "$content" ]
