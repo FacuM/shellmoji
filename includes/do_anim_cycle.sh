@@ -19,22 +19,22 @@ fi
 case $DOTCOUNT in
   0)
     DOTS=''
-    DOTCOUNT=$(( $DOTCOUNT + 1 ))
+    DOTCOUNT=1
     ;;
 
   1)
     DOTS='.'
-    DOTCOUNT=$(( $DOTCOUNT + 1 ))
+    DOTCOUNT=2
     ;;
 
   2)
     DOTS='..'
-    DOTCOUNT=$(( $DOTCOUNT + 1 ))
+    DOTCOUNT=3
     ;;
 
   3)
     DOTS='...'
-    DOTCOUNT=$(( $DOTCOUNT + 1 ))
+    DOTCOUNT=4
     ;;
 
   *)
