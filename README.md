@@ -3,6 +3,8 @@ Shellmoji
 
 Shellmoji is a simple human-readable implementation of emojis in a command-line used to represent different icons that wouldn't appear in a shell otherwise.
 
+![Shellmoji demo](https://i.imgur.com/euKCFlp.png)
+
 Usage
 -----
 
