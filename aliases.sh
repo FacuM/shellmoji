@@ -30,6 +30,8 @@ EMOJIS=(
 '\xE2\x9D\x93'     # (black question mark ornament)
 '\xF0\x9F\x8E\xB5' # (musical note)
 '\xF0\x9F\x93\x85' # (calendar)
+'\xF0\x9F\x8E\xB6' # (multiple musical notes)
+'\xF0\x9F\x8E\xB9' # (musical keyboard)
 )
 
 EARTHS=(
@@ -109,8 +111,14 @@ function alias_ls
         'epub')
           OUT="$OUT""$(getBookEmoji)"' '"$CURRENT"
           ;;
-        'flac' | 'mp3' | 'wma' | 'aac' | 'ac3' | 'dsf' | 'dts' | 'wav')
+        'mp3' | 'wma' | 'aac')
           OUT="$OUT""${EMOJIS[8]}"' '"$CURRENT"
+          ;;
+        'flac' | 'ac3' | 'dsf' | 'dts' | 'wav')
+          OUT="$OUT""${EMOJIS[10]}"' '"$CURRENT"
+          ;;
+        'mid' | 'mid')
+          OUT="$OUT""${EMOJIS[11]}"' '"$CURRENT"
           ;;
         *)
           OUT="$OUT""${EMOJIS[0]}"' '"$CURRENT"
