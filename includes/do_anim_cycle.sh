@@ -10,36 +10,11 @@ else
     FRAMECOUNT=0
   fi
 fi
-# Reset dotcount if not set or greater than maximum, animate dots.
-if [ -z $DOTCOUNT ]
-then
-  DOTCOUNT=0
-fi
 # Process dots, generate a string off the integer.
-case $DOTCOUNT in
-  0)
-    DOTS=''
-    DOTCOUNT=1
-    ;;
-
-  1)
-    DOTS='.'
-    DOTCOUNT=2
-    ;;
-
-  2)
-    DOTS='..'
-    DOTCOUNT=3
-    ;;
-
-  3)
-    DOTS='...'
-    DOTCOUNT=4
-    ;;
-
-  *)
-    DOTS=''
-    DOTCOUNT=0
-    ;;
-esac
+if [ "$DOTS" == '...' ]
+then
+ DOTS=''
+else
+ DOTS="$DOTS"'.'
+fi
 printf '\r'${CLOCKS["$FRAMECOUNT"]}' ''Loading'"$DOTS"'   '
